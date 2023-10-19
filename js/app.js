@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputEmail = document.querySelector("#email");
   const inputSubject = document.querySelector("#subject");
   const inputMessage = document.querySelector("#message");
+  const form = document.querySelector("#form");
 
   inputEmail.addEventListener("blur", validate);
   inputSubject.addEventListener("blur", validate);
@@ -18,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   function showError() {
     const error = document.createElement("P");
     error.textContent = "There was an error";
+    error.classList.add("bg-red-600", "text-white", "p-2", "text-center");
 
-    console.log(error);
+    form.appendChild(error);
   }
 });
