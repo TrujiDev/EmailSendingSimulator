@@ -10,17 +10,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function validate(event) {
     if (event.target.value.trim() === "") {
-      showError(`The ${event.target.id} field cannot be empty`);
+      showError(`The ${event.target.id} field cannot be empty`, event.target.parentElement);
     } else {
       console.log("Not empty");
     }
   }
 
-  function showError(msg) {
+  function showError(msg, ref) {
     const error = document.createElement("P");
     error.textContent = msg;
     error.classList.add("bg-red-600", "text-white", "p-2", "text-center");
 
-    form.appendChild(error);
+    ref.appendChild(error);
   }
 });
