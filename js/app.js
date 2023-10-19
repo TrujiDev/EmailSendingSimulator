@@ -12,6 +12,12 @@ document.addEventListener("DOMContentLoaded", function () {
       showError(`The ${event.target.id} field cannot be empty`, event.target.parentElement);
       return;
     }
+
+    if (event.target.id === "email" && !emailValidate(event.target.value)) {
+      showError("The email is invalid", event.target.parentElement);
+      return;
+    }
+
     cleanAlert(event.target.parentElement);
   }
 
@@ -30,5 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (alert) {
       alert.remove();
     }
+  }
+
+  function emailValidate(email) {
+    const regex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    const result = regex.test(email);
+    return result;
   }
 });
