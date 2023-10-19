@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputEmail = document.querySelector("#email");
   const inputSubject = document.querySelector("#subject");
   const inputMessage = document.querySelector("#message");
-  const form = document.querySelector("#form");
 
   inputEmail.addEventListener("blur", validate);
   inputSubject.addEventListener("blur", validate);
@@ -11,16 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
   function validate(event) {
     if (event.target.value.trim() === "") {
       showError(`The ${event.target.id} field cannot be empty`, event.target.parentElement);
-    } else {
-      console.log("Not empty");
+      return;
     }
+    cleanAlert(event.target.parentElement);
   }
 
   function showError(msg, ref) {
+    cleanAlert(ref);
+
     const error = document.createElement("P");
     error.textContent = msg;
-    error.classList.add("bg-red-600", "text-white", "p-2", "text-center");
+    error.classList.add("bg-red-600", "text-white", "p-2", "text-center", "alert");
 
     ref.appendChild(error);
+  }
+
+  function cleanAlert(ref) {
+    const alert = ref.querySelector(".alert");
+    if (alert) {
+      alert.remove();
+    }
   }
 });
