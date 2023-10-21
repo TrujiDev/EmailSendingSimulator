@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const inputEmail = document.querySelector("#email");
   const inputSubject = document.querySelector("#subject");
   const inputMessage = document.querySelector("#message");
+  const form = document.querySelector("#form");
   const btnSubmit = document.querySelector('#form button[type="submit"]');
+  const btnReset = document.querySelector('#form button[type="Reset"]');
 
   const email = {
     email: '',
@@ -13,6 +15,16 @@ document.addEventListener("DOMContentLoaded", function () {
   inputEmail.addEventListener("input", validate);
   inputSubject.addEventListener("input", validate);
   inputMessage.addEventListener("input", validate);
+  btnReset.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    email.email = '';
+    email.subject = '';
+    email.message = '';
+
+    form.reset();
+    checkEmail();
+  });
 
   function validate(event) {
     if (event.target.value.trim() === "") {
