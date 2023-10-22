@@ -21,12 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   btnReset.addEventListener("click", function (event) {
     event.preventDefault();
 
-    email.email = '';
-    email.subject = '';
-    email.message = '';
-
-    form.reset();
-    checkEmail();
+    formReset();
   });
 
   function sendEmail(event) {
@@ -34,6 +29,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     spinner.classList.add("flex");
     spinner.classList.remove("hidden");
+
+    setTimeout(() => {
+      spinner.classList.remove("flex");
+      spinner.classList.add("hidden");
+
+      formReset();
+    }, 3000);
   }
 
   function validate(event) {
@@ -89,5 +91,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     btnSubmit.classList.remove('opacity-50');
     btnSubmit.disabled = false;
+  }
+
+  function formReset() {
+    email.email = "";
+    email.subject = "";
+    email.message = "";
+
+    form.reset();
+    checkEmail();
   }
 });
