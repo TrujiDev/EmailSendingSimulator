@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
   inputMessage.addEventListener("input", validate);
   form.addEventListener("submit", sendEmail);
 
-  btnReset.addEventListener("click", function (event) {
+  btnReset.addEventListener("click", function (event, ref) {
     event.preventDefault();
 
     formReset();
@@ -35,6 +35,16 @@ document.addEventListener("DOMContentLoaded", function () {
       spinner.classList.add("hidden");
 
       formReset();
+
+      const successAlert = document.createElement("P");
+      successAlert.classList.add("bg-green-500", "text-white", "p-2", "text-center", "rounded-lg", "mt-10", "font-bold", "text-sm", "uppercase");
+      successAlert.textContent = "Message sent successfully";
+
+      form.appendChild(successAlert);
+
+      setTimeout(() => {
+        successAlert.remove();
+      }, 3000);
     }, 3000);
   }
 
