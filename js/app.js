@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("#form");
   const btnSubmit = document.querySelector('#form button[type="submit"]');
   const btnReset = document.querySelector('#form button[type="Reset"]');
+  const spinner = document.querySelector("#spinner");
 
   const email = {
     email: '',
@@ -15,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
   inputEmail.addEventListener("input", validate);
   inputSubject.addEventListener("input", validate);
   inputMessage.addEventListener("input", validate);
+  spinner.addEventListener("submit", sendEmail);
+
   btnReset.addEventListener("click", function (event) {
     event.preventDefault();
 
@@ -25,6 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
     form.reset();
     checkEmail();
   });
+
+  function sendEmail(event) {
+    event.preventDefault();
+
+    spinner.classList.add("flex");
+    spinner.classList.remove("hidden");
+  }
 
   function validate(event) {
     if (event.target.value.trim() === "") {
