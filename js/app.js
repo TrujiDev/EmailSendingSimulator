@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   inputEmail.addEventListener("input", validate);
   inputSubject.addEventListener("input", validate);
   inputMessage.addEventListener("input", validate);
-  spinner.addEventListener("submit", sendEmail);
+  form.addEventListener("submit", sendEmail);
 
   btnReset.addEventListener("click", function (event) {
     event.preventDefault();
